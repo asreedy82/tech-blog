@@ -23,11 +23,16 @@
                 {{/if}}
             </div>
         </div>
-        {{!-- {{#if logged_in}}
-        <h5>Hello, {{userName.username}}</h5>
-        {{/if}} --}}
     </nav>
 </div>
-{{{ body }}}
+<main>
+    {{{ body }}}
+</main>
+<footer>
+
+</footer>
+{{#if logged_in}}
+<script src="/js/logout.js"></script>
+{{/if}}
 
 </html>

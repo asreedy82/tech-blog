@@ -20,6 +20,7 @@ router.get('/', async (req, res) => {
     // render on page
     res.render('homepage', {
       blogs,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -27,7 +28,7 @@ router.get('/', async (req, res) => {
 });
 
 //get dashboard
-router.get('/dashboard', withAuth, async (res, req, next) => {
+router.get('/dashboard', withAuth, async (res, req) => {
   try {
 //get user's blogs
     const userData = await Blog.findAll({
@@ -74,24 +75,6 @@ router.get('/blog/:id', withAuth, async (req, res) => {
   }
 });
 
-//get user for main
-/* router.get('/', async (req, res) => {
-  try {
-    const userData = await User.findAll({
-      where: {id: req.session.user_id},
-    });
-
-    const userName = userData.map((userName) =>
-    userName.get({ plain: true})
-    );
-
-    res.render('main', {
-      userName,
-    });
-  } catch (err) {
-    res.status(500).json(err)
-  }
-}); */
 
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
