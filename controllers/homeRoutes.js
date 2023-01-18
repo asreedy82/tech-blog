@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { async } = require('seed/lib/seed');
 const { Blog, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
@@ -27,30 +26,30 @@ router.get('/', async (req, res) => {
   }
 });
 
-//get dashboard
-router.get('/dashboard', withAuth, async (res, req) => {
+
+
+//show user's blogs
+router.get('/dashboard', withAuth, async (req, res) => {
   try {
-//get user's blogs
-    const userData = await Blog.findAll({
-      where: {user_id: req.session.user_id},
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
       include: [
-        { model: User }, 
-        { model: Comment },
+        { model: Blog },
       ],
     });
-    console.log(req.session.user_id);
-    const blogs = blogData.map((blog) => 
-    blog.get({ plain: true })
-    );
+
+    const user = userData.get({ plain: true });
 
     res.render('dashboard', {
-      blogs, 
+      ...user,
       logged_in: true
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
 
 //get blog
 router.get('/blog/:id', withAuth, async (req, res) => {
