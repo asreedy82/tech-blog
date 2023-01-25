@@ -4,7 +4,8 @@
   <div class="card-body">
     <h5 class="card-title">{{blog.title}}</h5>
     <p class="card-text">Author: {{blog.user.username}}</p>
-    <a href="/blog" class="btn btn-primary">View Post</a>
+    <p class="card-text">Date Created: {{format_date blog.date_created}}</p>
+    <a href="/blog/{{blog.id}}" class="btn btn-primary">View Post</a>
   </div>
 </div>
 </div>

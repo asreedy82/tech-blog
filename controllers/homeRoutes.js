@@ -66,7 +66,7 @@ router.get('/blog/:id', withAuth, async (req, res) => {
     );
 
     res.render('blog', {
-      blog, 
+      ...blog, 
       logged_in: req.session.logged_in 
     });
   } catch (err) {
