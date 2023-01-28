@@ -17,7 +17,7 @@ document.querySelector().addEventListener('click', accordionHandler);
 
  */
 //handle adding a comment
-/* const commentHandler = async (event) => {
+const commentHandler = async (event) => {
     event.preventDefault();
     const commentText = document.querySelector('#comment-text').value.trim();
     console.log(`testing commentext ${commentText}`);
@@ -40,7 +40,7 @@ document.querySelector().addEventListener('click', accordionHandler);
 };
 
 document.querySelector('#comment-input').addEventListener('submit', commentHandler);
- */
+
 /* 
 <button onclick="myFunction()">Add Class</button>
 
