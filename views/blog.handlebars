@@ -1,21 +1,37 @@
-<div id="accordion">
-    {{#each blogs as |blog|}}
+<div class="container">
     <div class="card">
-        <div class="card-header" id="headingOne">
-            <h5 class="mb-0">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                    aria-controls="collapseOne">
-                    {{blog.title}}
-                </button>
-            </h5>
+        <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <p class="card-text">{{text}}</p>
         </div>
-        {{#each comments as |comment|}}
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="card-body">
-                {{comment.text}}
+    </div>
+    <div id="accordion">
+        {{#each comments as |comment| }}
+        <div class="card" id="comments">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{@index}}"
+                        aria-expanded="true" aria-controls="collapseOne">
+                        Comment By: {{comment.user.username}}, On: {{format_date comment.date_created}}
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapse{{@index}}" class="collapse" aria-labelledby="heading{{@index}}" data-parent="#accordion">
+                <div class="card-body">
+                    {{comment.text}}
+                </div>
             </div>
         </div>
         {{/each}}
     </div>
-    {{/each}}
+    <div class="input-group mb-3" id="comment-input">
+        <input type="text" class="form-control" placeholder="Add a comment" aria-label="Add a comment"
+            aria-describedby="basic-addon2" id="comment-text">
+        <div class="input-group-append" id="comment-button">
+            <button class="btn btn-outline-secondary" type="submit">Submit</button>
+        </div>
+    </div>
 </div>
+
+<script src="/comment.js"></script>

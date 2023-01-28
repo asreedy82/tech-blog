@@ -1,0 +1,13 @@
+.is-primary {
+    margin-bottom: 2px;
+}
+
+h2 {
+    margin-bottom: 8px;
+}
+
+.panel {
+    border-style: solid;
+    border-color: black;
+    margin-left: 5px;
+}

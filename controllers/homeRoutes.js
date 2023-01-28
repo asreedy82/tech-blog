@@ -50,24 +50,45 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
+//get comments
+/* router.get('/', withAuth, async (req, res) => {
+  try {
+    const commentData = await Comment.findAll({
+      include: [
+        { 
+        model: User,
+        attributes: 'username' 
+        },
+      ],
+    });
+
+    const comments = commentData.map((comment) =>
+    comment.get({ plain: true }));
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}); */
+
 
 //get blog
 router.get('/blog/:id', withAuth, async (req, res) => {
   try {
-    const blogData = await Blog.findByPk({
+    const blogData = await Blog.findByPk(req.params.id, {
       include: [
-        { model: Comment },
-        { model: User },
-      ],
+        { 
+          model: Comment,
+          include: [{model: User}], 
+        },
+      ]
     });
 
-    const blog = blogData.map((blog) => 
-    blog.get({ plain: true })
-    );
-
-    res.render('blog', {
+    const blog = blogData.get({ plain: true });
+    
+    res.render('blog', 
+    { 
       ...blog, 
-      logged_in: req.session.logged_in 
+      loggedIn: req.session.loggedIn 
     });
   } catch (err) {
     res.status(500).json(err)
