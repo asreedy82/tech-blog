@@ -19,20 +19,26 @@ document.querySelector().addEventListener('click', accordionHandler);
 //handle adding a comment
 const commentHandler = async (event) => {
     event.preventDefault();
-    const commentText = document.querySelector('#comment-text').value.trim();
-    console.log(`testing commentext ${commentText}`);
+    const text = document.querySelector('#comment-text').value.trim();
+    const blogUrl = window.location.href;
+    console.log(`blog URL is ${blogUrl}`);
+    const blogUrlArray = blogUrl.split('/');
+    console.log(blogUrlArray);
+    const blog_id = blogUrlArray[4];
+    console.log(`blog_id is ${blog_id}`);
+    console.log(`testing commentext ${text}`);
 
-    if (commentText) {
-        const response = await fetch(`/api/comments`, {
+    if (text) {
+        const response = await fetch(`/api/comments/` + blog_id, {
             method: 'POST',
-            body: JSON.stringify({ commentText }),
+            body: JSON.stringify({ text }),
             headers: {
                 'Content-Type': 'application/json',
             },
         });
 
         if (response.ok) {
-            document.location.replace('/blog');
+            document.location.replace('/blog/' + blog_id);
         } else {
             alert('Failed to create comment');
         }
