@@ -39,7 +39,7 @@ const commentHandler = async (event) => {
     }
 };
 
-document.querySelector('#comment-input').addEventListener('submit', commentHandler);
+document.querySelector('#comment-button').addEventListener('click', commentHandler);
 
 /* 
 <button onclick="myFunction()">Add Class</button>

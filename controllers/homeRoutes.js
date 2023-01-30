@@ -50,26 +50,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
-//get comments
-/* router.get('/', withAuth, async (req, res) => {
-  try {
-    const commentData = await Comment.findAll({
-      include: [
-        { 
-        model: User,
-        attributes: 'username' 
-        },
-      ],
-    });
-
-    const comments = commentData.map((comment) =>
-    comment.get({ plain: true }));
-
-  } catch (err) {
-    res.status(500).json(err);
-  }
-}); */
-
 
 //get blog
 router.get('/blog/:id', withAuth, async (req, res) => {
@@ -88,7 +68,7 @@ router.get('/blog/:id', withAuth, async (req, res) => {
     res.render('blog', 
     { 
       ...blog, 
-      loggedIn: req.session.loggedIn 
+      loggedIn: true
     });
   } catch (err) {
     res.status(500).json(err)
