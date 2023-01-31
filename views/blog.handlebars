@@ -8,10 +8,10 @@
     <div id="accordion">
         {{#each comments as |comment| }}
         <div class="card" id="comments">
-            <div class="card-header" id="headingOne">
+            <div class="card-header" id="heading{{@index}}">
                 <h5 class="mb-0">
                     <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{@index}}"
-                        aria-expanded="true" aria-controls="collapseOne">
+                        aria-expanded="false" aria-controls="collapse{{@index}}">
                         Comment By: {{comment.user.username}}, On: {{format_date comment.date_created}}
                     </button>
                 </h5>

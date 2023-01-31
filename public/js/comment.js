@@ -1,21 +1,5 @@
 
-//handle accordion stuff
-/* const getCollapsed = document.getElementsByClassName('#collapse');
 
-
-
-
-const getAccordionStatus = commentSection.getAttribute('class');
-const accordionHandler = (event) => {
-    event.preventDefault();
-    if (getAccordionStatus = 'collapse') {
-        setAttribute('class', 'collapse show')
-    }
-};
-
-document.querySelector().addEventListener('click', accordionHandler);
-
- */
 //handle adding a comment
 const commentHandler = async (event) => {
     event.preventDefault();
@@ -47,11 +31,3 @@ const commentHandler = async (event) => {
 
 document.querySelector('#comment-button').addEventListener('click', commentHandler);
 
-/* 
-<button onclick="myFunction()">Add Class</button>
-
-<script>
-function myFunction() {
-  document.getElementById("myH1").setAttribute("class", "democlass"); 
-}
-</script> */

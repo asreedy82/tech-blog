@@ -11,3 +11,14 @@ h2 {
     border-color: black;
     margin-left: 5px;
 }
+
+#blog-form {
+    padding: 2%;
+}
+
+#blog-container {
+    margin-bottom: 3px;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    padding-bottom: 12px;
+}

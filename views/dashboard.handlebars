@@ -1,11 +1,91 @@
-<div class="container">
+<div class="container" id="blog-container">
+  <h2>Your Blogs</h2>
   {{#each blogs as |blog|}}
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">{{blog.title}}</h5>
       <p class="card-text">{{blog.text}}</p>
-      <a href="blog/{{blog.id}}" class="btn btn-primary">View post</a>
+      <div class="container" id="dashboard-blog-buttons">
+        <a href="blog/{{blog.id}}" class="btn btn-primary">View post</a>
+        <!-- edit post modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editBlogModal">
+            Edit Post
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="editBlogModal" tabindex="-1" role="dialog"
+            aria-labelledby="updateBlogTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" type="text" id="updateBlogTitle">Update Blog Post</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="blog-title">Blog Title</label>
+                      <input type="text" class="form-control" id="update-title" value="{{blog.title}}">
+                    </div>
+                    <div class="form-group">
+                      <label for="blog-text">Blog entry</label>
+                      <input type="text" class="form-control" id="update-text" value="{{blog.text}}">
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" id="update-save-button" data-id="{{blog.id}}">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- delete post -->
+        <a href="blog/{{blog.id}}" class="btn btn-primary" data-id="{{blog.id}}">Delete post</a>
+      </div>
     </div>
   </div>
   {{/each}}
 </div>
+<!-- Button trigger modal -->
+<div class="container" id="blog-form">
+  <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#newBlogModal">
+    New Blog
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="newBlogModal" tabindex="-1" role="dialog" aria-labelledby="newBlogModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="newBlogModalTitle">New Blog</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="blog-title">Blog Title</label>
+              <input type="text" class="form-control" id="blog-title" placeholder="Enter title">
+            </div>
+            <div class="form-group">
+              <label for="blog-text">Blog entry</label>
+              <textarea class="form-control" id="blog-text" rows="10"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="save-button">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="/js/blog.js"></script>
