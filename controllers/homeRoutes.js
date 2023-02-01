@@ -27,6 +27,29 @@ router.get('/', async (req, res) => {
 });
 
 
+//get blog
+router.get('/blog/:id', withAuth, async (req, res) => {
+  try {
+    const blogData = await Blog.findByPk(req.params.id, {
+      include: [
+        { 
+          model: Comment,
+          include: [{model: User}], 
+        },
+      ]
+    });
+
+    const blog = blogData.get({ plain: true });
+    
+    res.render('blog', 
+    { 
+      ...blog, 
+      loggedIn: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err)
+  }
+});
 
 //show user's blogs
 router.get('/dashboard', withAuth, async (req, res) => {
@@ -49,32 +72,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-
-//get blog
-router.get('/blog/:id', withAuth, async (req, res) => {
-  try {
-    const blogData = await Blog.findByPk(req.params.id, {
-      include: [
-        { 
-          model: Comment,
-          include: [{model: User}], 
-        },
-      ]
-    });
-
-    const blog = blogData.get({ plain: true });
-    
-    res.render('blog', 
-    { 
-      ...blog, 
-      loggedIn: true
-    });
-  } catch (err) {
-    res.status(500).json(err)
-  }
-});
-
 
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
