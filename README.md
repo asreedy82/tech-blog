@@ -2,22 +2,21 @@
 
 ## Description
 
-The Tech-Blog
+The Tech-Blog is an application where anyone can write blog entries on tech-related topics. It is a resource for others in the tech industry to share their ideas, thoughts, opinion on the latest technology trends or news.
 
 [Link To Repo](https://github.com/asreedy82/tech-blog)
 
 ## Installation
 
-Application requirements: Insomnia as well as MySQL2, Sequelize, and dotenv packages
-To start, first create the schema and database using the SQL scripts in the `schema.sql` file in the `db` folder. Then seed the data by running `npm run seed` in the terminal. Then initiate the app by running `node server.js` in terminal to establish the server connection. Open Insomnia and enter the address for the API route that corresponds to the feature you want to use. For example, to review or change products, use `localhost:3001/api/products/`. For tags, `localhost:3001/api/tags/`. And for categories, `localhost:3001/api/categories/`. GET will return products/tags/categories. POST will create new. PUT will update existing. And DELETE will delete.
+Visit the link below. You can view article headlines without loggin in, but must create an account to view full blog posts. You also need an account to create blogs or comment on other blog entries.
 
-  - Link to video demo of app [Screencast Link](https://watch.screencastify.com/v/WrWWcLLZc2debGEevF94)
+[Link To Site](https://fathomless-lake-63055.herokuapp.com/)
 
 ## Usage
 
-The application is designed to help an ecommerce website manager view and make edits to existing inventory so that online shoppers will have a good user experience.
+The application is designed to help those in the tech industry share what's on their mind. The comment section creates a social environment to open up discussion on these topics.
 
-![Screen shot of GET for all products in Insomnia](assets/images/ecommerce-backend-insomnia_ss.png)
+![Screen shot of GET for all products in Insomnia](public/images/tech-blog-ss.png)
 
 ## Credits
 
