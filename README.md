@@ -2,9 +2,9 @@
 
 ## Description
 
-The Ecommerce Website Backend application manages inventory for an ecommerce company's website. It allows the inventory manager to create/update/remove products, product categories, and product tags to help keep the ecommerce site up to date and easy to use. The manager can also view all products, categories, and tags to review the inventory.
+The Tech-Blog
 
-[Link To Repo](https://github.com/asreedy82/ecomm-backend)
+[Link To Repo](https://github.com/asreedy82/tech-blog)
 
 ## Installation
 
