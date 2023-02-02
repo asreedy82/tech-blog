@@ -36,11 +36,12 @@ router.get('/blog/:id', withAuth, async (req, res) => {
           model: Comment,
           include: [{model: User}], 
         },
+        { model: User}
       ]
     });
 
     const blog = blogData.get({ plain: true });
-    
+    console.log(blog);
     res.render('blog', 
     { 
       ...blog, 
